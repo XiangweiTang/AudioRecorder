@@ -46,8 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backend\AudioInfo.cs" />
+    <Compile Include="Backend\RecordAudios.cs" />
     <Compile Include="Backend\UserInfo.cs" />
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\Line.cs" />
     <Compile Include="Common\MciCommands.cs" />
     <Compile Include="Backend\Trans.cs" />
     <Compile Include="Common\Storage.cs" />
