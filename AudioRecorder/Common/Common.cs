@@ -9,6 +9,7 @@ namespace AudioRecorder
 {
     internal static class Common
     {
+        private static Random Rand = new Random();
         #region DateTime
 
         public static string ToStringLog(this DateTime dt)
@@ -58,6 +59,20 @@ namespace AudioRecorder
             {
                 fs.Write(bytes, 0, bytes.Length);
             }
+        }
+        #endregion
+        #region Array
+        public static T[] Shuffle<T>(this IEnumerable<T> list)
+        {
+            T[] shuffledArray = list.ToArray();
+            for(int i = shuffledArray.Length - 1; i >= 0; i--)
+            {
+                int r = Rand.Next(i);
+                T t = shuffledArray[i];
+                shuffledArray[i] = shuffledArray[r];
+                shuffledArray[r] = t;
+            }
+            return shuffledArray;
         }
         #endregion
     }

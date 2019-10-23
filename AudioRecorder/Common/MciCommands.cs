@@ -33,15 +33,5 @@ namespace AudioRecorder
         {
             RunMci($"close {Alias}");
         }
-        public static void MciPreRecord(AudioInfo ai)
-        {
-            MciOpen();
-            MciSet(ai.BitsPerSample, ai.Channel, ai.SampleRate, ai.ByteRate, ai.BlockAlign);
-        }
-        public static void MciPostRecord(string filePath)
-        {
-            MciSave(filePath);
-            MciClose();
-        }
     }
 }

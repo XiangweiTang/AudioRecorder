@@ -10,11 +10,11 @@ namespace AudioRecorder
         public int CurrentIndex { get; private set; } = 0;
         
         private readonly string[] TransArray = new string[1] { "" };
-        public Trans(IEnumerable<string> transList)
+        public Trans(IEnumerable<string> transList, bool shuffle=false)
         {
-            TransArray = transList.ToArray();
+            TransArray = shuffle ? transList.Shuffle() : transList.ToArray();
             if (TransArray.Length == 0)
-                TransArray = new string[1] { "" };
+                TransArray = new string[1] { "" };            
         }
         public void ChangeIndex(int i)
         {
