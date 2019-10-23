@@ -11,7 +11,6 @@ namespace AudioRecorder
         private readonly StorageSchema Schema;
         private byte[] SchemaHeader = new byte[0];
         private byte[] Header = new byte[0];
-        private int CurrentIndex = 0;
         public Storage(StorageSchema schema)
         {
             Schema = schema;            

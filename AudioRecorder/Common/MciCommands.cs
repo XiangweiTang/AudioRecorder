@@ -1,13 +1,13 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 
 namespace AudioRecorder
 {
     internal static class MciCommands
     {
-        public static string FilePath { get; set; } = "";
         private const string Alias = "sound";
         [DllImport("winmm.dll")]
-        extern static void mciSendString(string cmdString, string returnString, int cchReturn, int callBack);
+        private extern static void mciSendString(string cmdString, string returnString, int cchReturn, int callBack);
         public static void RunMci(string cmdString)
         {
             mciSendString(cmdString, "", 0, 0);
@@ -25,13 +25,23 @@ namespace AudioRecorder
         {
             RunMci($"record {Alias}");
         }
-        public static void MciSave()
+        public static void MciSave(string filePath)
         {
-            RunMci($"save {Alias} {FilePath}");
+            RunMci($"save {Alias} {filePath}");
         }
         public static void MciClose()
         {
             RunMci($"close {Alias}");
+        }
+        public static void MciPreRecord(AudioInfo ai)
+        {
+            MciOpen();
+            MciSet(ai.BitsPerSample, ai.Channel, ai.SampleRate, ai.ByteRate, ai.BlockAlign);
+        }
+        public static void MciPostRecord(string filePath)
+        {
+            MciSave(filePath);
+            MciClose();
         }
     }
 }

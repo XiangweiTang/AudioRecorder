@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Backend\AudioInfo.cs" />
-    <Compile Include="Backend\RecordAudios.cs" />
     <Compile Include="Backend\UserInfo.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Line.cs" />
