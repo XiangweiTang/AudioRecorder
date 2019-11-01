@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace AudioRecorder
@@ -24,6 +25,16 @@ namespace AudioRecorder
         public void SetIndex(int i)
         {
             CurrentIndex = i;
+            ValidateIndex();
+        }
+        public void JumpToLastIndex()
+        {
+            CurrentIndex = Length - 1;
+            ValidateIndex();
+        }
+        public void JumpToFirstIndex()
+        {
+            CurrentIndex = 0;
             ValidateIndex();
         }
         private void ValidateIndex()
